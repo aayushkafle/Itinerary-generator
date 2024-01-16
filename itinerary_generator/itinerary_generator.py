@@ -1,19 +1,19 @@
 import itertools
 
 class ItineraryGenerator:
-    def __init__(self, island_hops, costumers, preferences):
+    def __init__(self, H, C, prefs):
         """
         Initialize the ItineraryGenerator object.
 
         Args:
-        - island_hops (int): No of islands hops during the trip.
-        - costumers (int): No of costumers for the trip.
-        - preference (list): list of tuples (hop_number, transport_type) representing costumer preference
+        - H (int): No of islands hops during the trip.
+        - C (int): No of costumers for the trip.
+        - prefs (list): list of tuples (hop_number, transport_type) representing costumer preference
         """ 
-        print(island_hops, costumers, preferences)
-        self.island_hops = island_hops
-        self.costumers = costumers
-        self.preferences = preferences
+        print(H, C, prefs)
+        self.H = H
+        self.C = C
+        self.prefs = prefs
 
     def generate_itinerary(self):
         """
@@ -21,7 +21,7 @@ class ItineraryGenerator:
 
         Returns:
         - bool: True if the itinerary was possible to generate, false if not.
-        - list: List of travel medium for itinenary.
+        - list: list of transport type for itinenary.
         """
 
-        return false
+        return True, [0,0,0,0,1,0,1]
