@@ -39,7 +39,7 @@ class ItineraryGenerator:
             test_itinerary = dict(zip(list(range(self.H)), itinerary_from_number(k, base_itienary)))
             # iterate though each user
             for pref in self.prefs:
-                can_satisfy = find_can_satisfy(pref, test_itinerary)
+                can_satisfy = check_can_satisfy(pref, test_itinerary)
                 # if can't satisfy any one user preference, move to next option
                 if not can_satisfy:
                     break

@@ -12,7 +12,7 @@ def itinerary_from_number(k, base_itienary, mode2="airborne"):
     Returns:
     - list: list of generated itinerary.
     """
-    
+
     itinerary = base_itienary.copy()
     x = bin(k)[2:]
     for i in range(len(x)):
@@ -20,7 +20,7 @@ def itinerary_from_number(k, base_itienary, mode2="airborne"):
             itinerary[-i-1] = mode2
     return itinerary
 
-def find_can_satisfy(d1, d2):
+def check_can_satisfy(d1, d2):
     """
     Helper function to check if a test itinerary satisfies with one of costumer
     preferences.
