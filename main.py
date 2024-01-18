@@ -62,7 +62,7 @@ def main(input_file=None):
         H = int(input())                                    # Number of island hops
         C = int(input())                                    # Number of costumers
         if C > 250:
-            print("NO ITINERARY\n")                           # No of costumers exceeds 250
+            print("NO ITINERARY")                           # No of costumers exceeds 250
             sys.exit(1)
         input_lines = []
         input_lines.extend([input() for i in range(C)])
