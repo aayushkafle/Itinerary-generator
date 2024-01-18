@@ -1,4 +1,5 @@
 import sys
+
 from itinerary_generator.itinerary_generator import ItineraryGenerator
 
 def parse_input(lines):
