@@ -2,7 +2,7 @@ import unittest
 import subprocess
 
 from main import parse_input
-from itinerary_generator.helper import itinerary_from_number, check_can_satisfy
+from itinerary_generator.helper import itinerary_from_number, check_can_satisfy, find_min_airborne
 
 class TestMain(unittest.TestCase):
 
@@ -58,6 +58,33 @@ class TestHelper(unittest.TestCase):
         result = check_can_satisfy(d1, d2)
         expected_result = True
         self.assertEqual(result, expected_result)
+
+    def test_find_min_airborne(self):
+
+        # Test case 1
+        solutions = [{0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'by-sea', 4: 'by-sea'}, 
+                    {0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'by-sea', 4: 'airborne'}, 
+                    {0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'airborne', 4: 'by-sea'}, 
+                    {0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'airborne', 4: 'airborne'}, 
+                    {0: 'by-sea', 1: 'airborne', 2: 'airborne', 3: 'by-sea', 4: 'by-sea'}, 
+                    {0: 'by-sea', 1: 'airborne', 2: 'airborne', 3: 'by-sea', 4: 'airborne'}]
+        result = find_min_airborne(solutions)
+        expected_result = {0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'by-sea', 4: 'by-sea'}
+        self.assertEqual(result, expected_result)
+
+        # Test case 2
+        solutions = [{0: 'airborne', 1: 'by-sea', 2: 'airborne', 3: 'by-sea'}, 
+                    {0: 'by-sea', 1: 'airborne', 2: 'airborne', 3: 'by-sea'}, 
+                    {0: 'by-sea', 1: 'by-sea', 2: 'airborne', 3: 'airborne'}, 
+                    {0: 'airborne', 1: 'by-sea', 2: 'airborne', 3: 'airborne'}, 
+                    {0: 'by-sea', 1: 'by-sea', 2: 'by-sea', 3: 'airborne'}, 
+                    {0: 'by-sea', 1: 'airborne', 2: 'airborne', 3: 'by-sea'},
+                    {0: 'airborne', 1: 'airborne', 2: 'airborne', 3: 'by-sea'}, 
+                    {0: 'airborne', 1: 'airborne', 2: 'airborne', 3: 'by-sea'}]
+        result = find_min_airborne(solutions)
+        expected_result = {0: 'by-sea', 1: 'by-sea', 2: 'by-sea', 3: 'airborne'}
+        self.assertEqual(result, expected_result)
+
 
 class TestEndToEnd(unittest.TestCase):
 
