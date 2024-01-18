@@ -32,6 +32,7 @@ class ItineraryGenerator:
         # all travel by-sea
         base_itienary = ["by-sea" for i in range(self.H)]
 
+        valid_solutions = []
         # iterate through each one of available 2^H options
         for k in range(2**self.H):
             can_satisfy = True
@@ -44,10 +45,13 @@ class ItineraryGenerator:
                 if not can_satisfy:
                     break
             if can_satisfy:
-                return test_itinerary
-
+                valid_solutions.append(test_itinerary)
+        
+        # get the itinerary solution with minimum airborne travel
+        final_itinerary = find_min_airborne(valid_solutions)
+    
         # if no solution satisfies then return None
-        return None
+        return final_itinerary
     
     def has_multiple_airborne(self):
         """

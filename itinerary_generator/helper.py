@@ -37,3 +37,26 @@ def check_can_satisfy(d1, d2):
         if element in d2.items():
             return True 
     return False
+
+def find_min_airborne(solutions):
+    """
+    Finds the solution with minimum number of airborne entry among the list of solutions
+
+    Args:
+    - solutions (list): list dicts containing solutions that satisfy costumer preferences.
+
+    Returns:
+    - dict: the solution that has the minimum number of airborne travel.
+    Or
+    - None: if there are no items on the list
+    """
+
+    min_count, min_index = len(solutions), 0
+    if min_count == 0:
+        return None
+    for i in range(len(solutions)):
+        solution = solutions[i]
+        if list(solution.values()).count("airborne") < min_count:
+            min_count = list(solution.values()).count("airborne")
+            min_index = i
+    return solutions[min_index]
