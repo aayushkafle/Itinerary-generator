@@ -58,6 +58,22 @@ class TestHelper(unittest.TestCase):
         result = check_can_satisfy(d1, d2)
         expected_result = True
         self.assertEqual(result, expected_result)
+
+class TestEndToEnd(unittest.TestCase):
+
+    def test_itinerary_generator(self):
+
+        # Test case 1
+        input_file = "input.txt"
+        process1 = subprocess.run("python main.py "+input_file, stdout=subprocess.PIPE, text=True)
+        expected_result = "0 by-sea, 1 by-sea, 2 airborne, 3 by-sea, 4 by-sea, 5 by-sea"
+        self.assertEqual(process1.stdout, expected_result)
+
+        # Test case 2
+        stdin_text = "2\n3\n0 by-sea\n0 airborne\n1 by-sea\n"
+        process2 = subprocess.run("python main.py", input=stdin_text, stdout=subprocess.PIPE, text=True)
+        expected_result = "NO ITINERARY\n"
+        self.assertEqual(process2.stdout, expected_result)
         
 if __name__ == '__main__':
     unittest.main()
