@@ -35,9 +35,8 @@ def print_results(itinenary):
             if i != 0:                                      # don't print comma on first item
                 print(", ", end="")
             print("%d %s" % (i, itinenary[i]), end="")      # print the results
-        print("\n")
     else:
-        print("NO ITINERARY\n")                               # print when no results are possible
+        print("NO ITINERARY")                               # print when no results are possible
         
 
 def main(input_file=None):
@@ -74,7 +73,7 @@ def main(input_file=None):
     itinerary = itinerary_generator_obj.generate_itinerary()
 
     print_results(itinerary)
-    sys.exit(1)
+    sys.exit(0)
 
 if __name__=="__main__":
     if len(sys.argv) > 2:
