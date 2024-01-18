@@ -12,6 +12,7 @@ Itinerary Generator for coding test. The problem details can be found in [this p
     |--README.md
     |--Technical Interview Problem.pdf
     |--input.txt
+    |--LICENSE
     |--main.py
     |--requirement.py
     |--test.py
